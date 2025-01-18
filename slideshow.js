@@ -1,289 +1,77 @@
-function dialogOffen(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
+"use strict";
 
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[0].classList.add("aktiv");
+//global Index
+let currentIndex = 0; // Hält den Index des aktuellen Bildes
 
-   const slides =  document.getElementsByClassName("slide");
-   slides[0].classList.add("aktiv");
+//
+// Bild öffnen
+//
 
-   let indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[0].classList.add("aktiv");
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const imgs = document.querySelectorAll("main img");
+  const lightbox = document.querySelector(".lightbox");
+  const lightboxImage = document.querySelector("#lightboxImage");
 
-function dialogOffen1(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
+  imgs.forEach((img, index) => {
+    img.addEventListener("click", (event) => {
+      currentIndex = index; // Aktuellen Index aktualisieren
+      lightboxImage.src = event.target.src;
+      lightbox.style.display = "flex";
+    });
+  });
+});
 
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[1].classList.add("aktiv");
+//
+// Navigieren mit Prev und Next
+//
+document.addEventListener("DOMContentLoaded", () => {
+  const imgs = document.querySelectorAll("main img");
+  const lightboxImage = document.querySelector("#lightboxImage");
+  const prevBtn = document.querySelector(".pfeil-links");
+  const nextBtn = document.querySelector(".pfeil-rechts");
 
-   const slides =  document.getElementsByClassName("slide");
-   slides[1].classList.add("aktiv");
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = imgs.length - 1; // Gehe zum letzten Bild, wenn am Anfang
+    }
+    lightboxImage.src = imgs[currentIndex].src;
+  });
 
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[1].classList.add("aktiv");
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < imgs.length - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Zurück zum ersten Bild, wenn am Ende
+    }
+    lightboxImage.src = imgs[currentIndex].src;
+  });
+});
 
-   umschalten(1)
-}
+//
+// Lightbox Schließen
+//
+document.addEventListener("DOMContentLoaded", () => {
+  const background = document.querySelector(".lightbox");
+  background.addEventListener("click", (e) => {
+    if (e.target !== background) return;
+    background.style.display = "none";
+  });
+});
 
-function dialogOffen2(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
+//
+// Dialog schließen
+//
 
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[2].classList.add("aktiv");
+document.addEventListener("DOMContentLoaded", () => {
+    const background = document.querySelector(".lightbox");
+    const lightboxImage = document.querySelector("#lightboxImage");
+    const BtnClose = document.querySelector(".dialog-schliessen-button")
 
-   const slides =  document.getElementsByClassName("slide");
-   slides[2].classList.add("aktiv");
-
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[2].classList.add("aktiv");
-
-   umschalten(2)
-}
-
-function dialogOffen3(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
-
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[3].classList.add("aktiv");
-
-   const slides =  document.getElementsByClassName("slide");
-   slides[3].classList.add("aktiv");
-
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[3].classList.add("aktiv");
-
-   umschalten(3)
-}
-
-function dialogOffen4(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
-
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[4].classList.add("aktiv");
-
-   const slides =  document.getElementsByClassName("slide");
-   slides[4].classList.add("aktiv");
-
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[4].classList.add("aktiv");
-
-   umschalten(4)
-}
-
-function dialogOffen5(dialogId) {
-
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
-
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[5].classList.add("aktiv");
-
-   const slides =  document.getElementsByClassName("slide");
-   slides[5].classList.add("aktiv");
-
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[5].classList.add("aktiv");
-
-   umschalten(5)
-}
-
-function dialogOffen6(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
-
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[6].classList.add("aktiv");
-
-   const slides =  document.getElementsByClassName("slide");
-   slides[6].classList.add("aktiv");
-
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[6].classList.add("aktiv");
-
-   umschalten(6)
-}
-
-function dialogOffen7(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
-
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[7].classList.add("aktiv");
-
-   const slides =  document.getElementsByClassName("slide");
-   slides[7].classList.add("aktiv");
-
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-   indikatoren[7].classList.add("aktiv");
-
-   umschalten(7)
-}
-
-function dialogOffen8(dialogId) {
-    document.getElementById(dialogId).classList.add("sichtbar");
-    document.getElementById("body-overlay").classList.add("sichtbar");
-
-    
-    const bilder = document.getElementsByClassName("bilder")
-    bilder[8].classList.add("aktiv");
-
-    const slides =  document.getElementsByClassName("slide");
-    slides[8].classList.add("aktiv");
-
-    const indikatoren = document.getElementsByClassName("indikator");
-    indikatoren[0].classList.remove("aktiv");
-    indikatoren[1].classList.remove("aktiv");
-    indikatoren[2].classList.remove("aktiv");
-    indikatoren[3].classList.remove("aktiv");
-    indikatoren[4].classList.remove("aktiv");
-    indikatoren[5].classList.remove("aktiv");
-    indikatoren[6].classList.remove("aktiv");
-    indikatoren[7].classList.remove("aktiv");
-    indikatoren[8].classList.add("aktiv");
-
-    umschalten(8)
-}
-function removeOverlay()
- {
-   const bilder = document.getElementsByClassName("bilder");
-   bilder[0].classList.remove("aktiv");
-   bilder[1].classList.remove("aktiv");
-   bilder[2].classList.remove("aktiv");
-   bilder[3].classList.remove("aktiv");
-   bilder[4].classList.remove("aktiv");
-   bilder[5].classList.remove("aktiv");
-   bilder[6].classList.remove("aktiv");
-   bilder[7].classList.remove("aktiv");
-   bilder[8].classList.remove("aktiv");
-
-   const slides = document.getElementsByClassName("slide");
-   slides[0].classList.remove("aktiv");
-   slides[1].classList.remove("aktiv");
-   slides[2].classList.remove("aktiv");
-   slides[3].classList.remove("aktiv");
-   slides[4].classList.remove("aktiv");
-   slides[5].classList.remove("aktiv");
-   slides[6].classList.remove("aktiv");
-   slides[7].classList.remove("aktiv");
-   slides[8].classList.remove("aktiv");
-
-   const indikatoren = document.getElementsByClassName("indikator");
-   indikatoren[0].classList.remove("aktiv");
-   indikatoren[1].classList.remove("aktiv");
-   indikatoren[2].classList.remove("aktiv");
-   indikatoren[3].classList.remove("aktiv");
-   indikatoren[4].classList.remove("aktiv");
-   indikatoren[5].classList.remove("aktiv");
-   indikatoren[6].classList.remove("aktiv");
-   indikatoren[7].classList.remove("aktiv");
-   indikatoren[8].classList.remove("aktiv");
-
-    document.getElementById("body-overlay").classList.remove("sichtbar");
-    document.getElementById("loslegen-dialog").classList.remove("sichtbar"); 
-}
-
-const indikatoren = document.getElementsByClassName("indikator");
-
-const slides = document.getElementsByClassName("slide");
-
-let aktuellerIndex = 0;
-
-function umschalten(anzahl) {
-indikatoren[aktuellerIndex].classList.remove("aktiv");
-slides[aktuellerIndex].classList.remove("aktiv")
-
-let neuerIndex = aktuellerIndex + anzahl
-
-if(neuerIndex <0){
-    neuerIndex = slides.length -1;
-}
-
-if(neuerIndex > slides.length -1){
-    neuerIndex = 0;
-}
-
-indikatoren[neuerIndex].classList.add("aktiv");
-slides[neuerIndex].classList.add("aktiv");
-
-aktuellerIndex = neuerIndex
-}
-
-function springeZuEintrag(neuerIndex) {
-    indikatoren[aktuellerIndex].classList.remove("aktiv");
-    slides[aktuellerIndex].classList.remove("aktiv");
-
-    indikatoren[neuerIndex].classList.add("aktiv");
-    slides[neuerIndex].classList.add("aktiv");
-
-    aktuellerIndex = neuerIndex;
-}
+    BtnClose.addEventListener("click", (e) => {
+        if (e.target !== BtnClose) return;
+        lightboxImage.style.display = "none";
+        background.style.display = "none";
+    } )
+} )
