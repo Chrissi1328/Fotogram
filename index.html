@@ -1,80 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Fotogram</title>
-    <link rel="icon" href="./favicon_fotogram.png">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-    <img class="header_img" src="./logo_fotogram.svg" alt="">
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./test.css" rel="stylesheet">
 
-<div class="main">
-    <h2 class="h2">Your personal photo album</h2>
-    <div class="img_div">
-        <a class="img_link" href="#" onclick="dialogOffen('loslegen-dialog')"><img class="main_imgs" src="./beach-1839922_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen1('loslegen-dialog')"><img class="main_imgs" src="./beach-5264739_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen2('loslegen-dialog')"><img class="main_imgs" src="./beach-6517214_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen3('loslegen-dialog')"><img class="main_imgs" src="./beach-8456325_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen4('loslegen-dialog')"><img class="main_imgs" src="./deckchairs-355596_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen5('loslegen-dialog')"><img class="main_imgs" src="./selfie-5219202_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen6('loslegen-dialog')"><img class="main_imgs" src="./sunset-3726030_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen7('loslegen-dialog')"><img class="main_imgs" src="./sunset-8113697_1280.jpg" alt=""></a>
-        <a class="img_link" href="#" onclick="dialogOffen8('loslegen-dialog')"><img class="main_imgs" src="./surfer-4309020_1280.jpg" alt=""></a>
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+        <img class="header_img" src="./logo_fotogram.svg" alt="">
+    </header>
+    <main>
+      <img class="main_imgs" src="./beach-1839922_1280.jpg" alt="" />
+      <img class="main_imgs" src="./beach-5264739_1280.jpg" alt="" />
+      <img class="main_imgs" src="./beach-6517214_1280.jpg" alt="" />
+      <img class="main_imgs" src="./beach-8456325_1280.jpg" alt="" />
+      <img class="main_imgs" src="./deckchairs-355596_1280.jpg" alt="" />
+      <img class="main_imgs" src="./selfie-5219202_1280.jpg" alt="" />
+      <img class="main_imgs" src="./sunset-3726030_1280.jpg" alt="" />
+      <img class="main_imgs" src="./sunset-8113697_1280.jpg" alt="" />
+      <img class="main_imgs" src="./surfer-4309020_1280.jpg" alt="" />
+    </main>
+    <div class="lightbox">
+        <div class="content">
+            <a class="pfeil pfeil-links"><span>&#10094;</span></a>
+            <div><img id="lightboxImage" ></div>
+            <a class="pfeil pfeil-rechts"><span>&#10095;</span></a>
+            <a class="dialog-schliessen-button" href="#">X</a>
+            <ol class="indikatorenliste">
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+                <li class="indikator">&#8226;</li>
+            </ol>
+        </div>
     </div>
-</div>
-<div class="footer">
-    <p>Christian Kaindl</p>
-    <p>2024</p> 
-</div>
-<div id="body-overlay" onclick="removeOverlay()"></div>
-<div class="dialog" id="loslegen-dialog"> 
-    <div class="slide">
-        <img src="./beach-1839922_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./beach-5264739_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./beach-6517214_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./beach-8456325_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./deckchairs-355596_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./selfie-5219202_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./sunset-3726030_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./sunset-8113697_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <div class="slide">
-        <img src="./surfer-4309020_1280.jpg" class="dialog_img bilder" alt="">
-    </div>
-    <a class="pfeil pfeil-links" onclick="umschalten(-1)"><span>&#10094;</span></a>
-    <a class="pfeil pfeil-rechts" onclick="umschalten(1)"><span>&#10095;</span></a>
-    <ol class="indikatorenliste">
-        <li class="indikator" onclick="springeZuEintrag(0)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(1)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(2)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(3)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(4)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(5)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(6)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(7)">&#8226;</li>
-        <li class="indikator" onclick="springeZuEintrag(8)">&#8226;</li>
-    </ol>
-    <a class="dialog-schliessen-button" href="">X</a>
-</div>
-
-<script src="slideshow.js"></script>
-</body>
+    <div class="footer">
+        <p>Christian Kaindl</p>
+        <p>2025</p>
+    <script src="test.js"></script>
+  </body>
 </html>
