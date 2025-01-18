@@ -1,9 +1,13 @@
 * {
-    margin: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-/*Hauptseite*/
+
+body {
+    position: relative;
+}
 
 header{
     width: 100%;
@@ -13,51 +17,128 @@ header{
     align-items: center;
 }
 
+
 .header_img{
     width: 300px;
     height: 80px;
     padding-left: 50px;
 }
 
-.main{
+
+main {
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    min-height: 90vh;
+    flex-wrap:wrap;
+    gap:10px;
     background-color: rgb(8, 33, 41);
 }
 
-.h2{
-    font-size: 45px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75px;
-}
-
-.main_imgs{
-    width: 250px;
-    height: 175px;
-    margin: 8px;
+main img {
+    height: 200px;
+    width: 200px;
     object-fit: cover;
     border-radius: 10px;
+    cursor: pointer;
 }
 
-.img_div{
+main img:hover{
+    box-shadow: 0 0 5px 5px blue;
+}
+
+.lightbox {
+    display:none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox .content{
+    width: 600px;
+    height: 500px;
+}
+
+.content{
+    position: absolute;
+}
+
+.lightbox img {
+    height: 500px;
+    width: 600px;
+    object-fit: cover;
+}
+
+.pfeil{
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.pfeil:hover{
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.pfeil-links{
+    top: 75px;
+    bottom: 75px;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 90%;
+    width: 15%;
 }
 
-.img_link:hover{
+.pfeil-rechts{
+    top: 75px;
+    bottom: 75px;
+    right: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+}
+
+.dialog-schliessen-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    color: black;
     text-decoration: none;
-    border-radius: 10px;
-    box-shadow: 0 0 5px 5px blue;
+    cursor: pointer;
+}
+
+.indikatorenliste{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    list-style-type: none;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    margin: 0 90px 0 90px;
+    padding: 0;
+    gap: 25px;
+}
+
+.indikator{
+    cursor: pointer;
+}
+
+.indikator:hover{
+    color: rgba(0, 0, 0, 1);
+    font-size: 70px;
 }
 
 .footer{
@@ -67,281 +148,6 @@ header{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(8, 33,41);
+    background-color: rgb(3, 21, 27);
     color: white;
-}
-
-/*Dialog*/
-
-.dialog {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 8px;
-    box-shadow: 8px 8px 16px rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 300ms ease-in-out;
-}
-
-#loslegen-dialog {
-    width: 600px;
-    height: 500px;
-}
-
-.slide{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    opacity: 0;
-}
-
-.dialog_img{
-    width: 100%;
-    height: 500px;
-    object-fit: fill;
-}
-
-/*Pfeile*/
-
-.pfeil{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    font-size: 50px;
-    font-weight: bold;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 15%;
-}
-
-.pfeil:hover{
-    color: white;
-    user-select: none;
-    cursor: pointer;
-}
-
-.pfeil-links{
-    left: 0;
-}
-
-.pfeil-rechts{
-    right: 0;
-}
-
-.indikatorenliste{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    list-style-type: none;
-    color: black;
-    font-size: 60px;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-}
-
-.indikator{
-    padding: 0 10px;
-    user-select: none;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.2s;
-}
-
-.indikator:hover{
-    font-size: 80px;
-}
-
-.aktiv{
-    opacity: 1;
-}
-
-.dialog-schliessen-button {
-    position: absolute;
-    top: 18px;
-    right: 20px;
-    font-size: 28px;
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.dialog-schliessen-button:hover{
-    font-size: 35px;
-}
-
-/*Overlay*/
-
-#body-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 300ms ease-in-out;
-}
-
-#body-overlay.sichtbar, .dialog.sichtbar {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/*Responsive*/
-
-/*header*/
-@media (max-width: 400px){
-    .header_img{
-        width: 250px;
-        padding: 0;
-    }
-}
-
-/*h2*/
-@media (max-width: 560px){
-    .h2{
-        font-size: 35px;
-        padding-top: 25px;
-        text-align: center;
-    }
-}
-
-/*Main-Imgs*/
-@media (max-width: 1350px){
-    .main_imgs{
-        width: 220px;
-        height: 150px;
-        object-fit: cover;
-    }
-}
-
-@media (max-width: 1200px){
-    .main_imgs{
-        width: 200px;
-        height: 150px;
-        object-fit: cover;
-    }
-}
-
-@media (max-width: 1100px){
-    .main_imgs{
-        width: 180px;
-        height: 150px;
-        object-fit: cover;
-    }
-}
-
-@media (max-width: 1000px){
-    .main_imgs{
-        width: 170px;
-        height: 130px;
-        object-fit: cover;
-    }
-}
-
-@media (max-width: 600px){
-    .main_imgs{
-        width: 150px;
-        height: 110px;
-    }
-}
-
-@media (max-width: 520px){
-    .main_imgs{
-        width: 115px;
-        height: 100px;
-    }
-}
-
-@media (max-width: 420px){
-    .main_imgs{
-        width: 85px;
-        height: 75px;
-    }
-}
-
-/*Dialog*/
-@media (max-width: 750px){
-    #loslegen-dialog{
-        width: 450px;
-        height: 400px;
-    }
-
-    .indikatorenliste{
-        font-size: 45px;
-    }
-
-    .dialog-schliessen-button{
-        top: 15px;
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 550px){
-    #loslegen-dialog{
-        width: 400px;
-        height: 350px;
-    }
-
-    .indikatorenliste{
-        font-size: 30px;
-    }
-
-    .dialog-schliessen-button{
-        top: 10px;
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 450px){
-    .dialog_img{
-        width: 300px;
-        height: 275px;
-    }
-    #loslegen-dialog{
-        width: 300px;
-        height: 275px;
-    }
-
-    .indikatorenliste{
-        font-size: 20px;
-    }
-
-    .dialog-schliessen-button{
-        top: 7px;
-        font-size: 10px;
-    }
-}
-
-@media (max-width: 350px){
-    .dialog_img{
-        width: 250px;
-        height: 200px;
-    }
-    #loslegen-dialog{
-        width: 250px;
-        height: 200px;
-    }
-
-    .indikatorenliste{
-        font-size: 15px;
-    }
-
-    .dialog-schliessen-button{
-    top: 3px;
-    right: 5px;
-    font-size: 8px;
-    }
 }
